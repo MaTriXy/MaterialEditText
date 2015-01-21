@@ -28,7 +28,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.MultiAutoCompleteTextView;
 
 import com.nineoldandroids.animation.ArgbEvaluator;
 import com.nineoldandroids.animation.ObjectAnimator;
@@ -40,12 +40,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * EditText in Material Design
- * <p/>
- * author:rengwuxian
- * <p/>
+ * Created by rengwuxian on 2015/1/8.
  */
-public class MaterialEditText extends EditText {
+public class MaterialMultiAutoCompleteTextView extends MultiAutoCompleteTextView {
 
   @IntDef({FLOATING_LABEL_NONE, FLOATING_LABEL_NORMAL, FLOATING_LABEL_HIGHLIGHT})
   public @interface FloatingLabelType {
@@ -224,9 +221,9 @@ public class MaterialEditText extends EditText {
    * The font used for the accent texts (floating label, error/helper text, character counter, etc.)
    */
   private Typeface accentTypeface;
-
+  
   /**
-   * The font used on the view (EditText content)
+   * The font used on the view (MultiAutoCompleteTextView content)
    */
   private Typeface typeface;
 
@@ -275,18 +272,18 @@ public class MaterialEditText extends EditText {
   OnFocusChangeListener outerFocusChangeListener;
   private ArrayList<METValidator> validators = new ArrayList<>();
 
-  public MaterialEditText(Context context) {
+  public MaterialMultiAutoCompleteTextView(Context context) {
     super(context);
     init(context, null);
   }
 
-  public MaterialEditText(Context context, AttributeSet attrs) {
+  public MaterialMultiAutoCompleteTextView(Context context, AttributeSet attrs) {
     super(context, attrs);
     init(context, attrs);
   }
 
   @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-  public MaterialEditText(Context context, AttributeSet attrs, int style) {
+  public MaterialMultiAutoCompleteTextView(Context context, AttributeSet attrs, int style) {
     super(context, attrs, style);
     init(context, attrs);
   }
@@ -1014,7 +1011,7 @@ public class MaterialEditText extends EditText {
    * @param validator Validator to add
    * @return This instance, for easy chaining
    */
-  public MaterialEditText addValidator(METValidator validator) {
+  public MaterialMultiAutoCompleteTextView addValidator(METValidator validator) {
     this.validators.add(validator);
     return this;
   }
